@@ -9,7 +9,7 @@ var testerDefinition = tester_definition.TesterDefinition{
 	ExecutableFileName: "script.sh",
 	TestCases: []tester_definition.TestCase{
 		{
-			Slug:     "init",
+			Slug:     "oq4",
 			TestFunc: testInit,
 		},
 	},
