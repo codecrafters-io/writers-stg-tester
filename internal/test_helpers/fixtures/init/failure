@@ -1,4 +1,4 @@
-[33m[stage-1] [0m[94mRunning tests for Stage #1: init[0m
+[33m[stage-1] [0m[94mRunning tests for Stage #1: oq4[0m
 [33m[stage-1] [0m[94m$ echo "dog" | ./script.sh -E "d"[0m
 [33m[stage-1] [0m[92m✓ Received exit code 0.[0m
 [33m[stage-1] [0m[94m$ echo "dog" | ./script.sh -E "f"[0m

@@ -94,27 +94,30 @@ marketing:
         Didn't even know that was possible!
 
 stages:
-  - slug: "init"
-    name: "Match a literal character"
+  - legacy_slug: "init"
+    slug: "oq4"
+    name: "Read header"
     difficulty: very_easy
     description_md: |-
-      In this stage, we'll handle the simplest regex possible: a single character. 
+      In this stage, you'll add support for concurrent connections.
 
-      **Example:** `a` should match "apple", but not "dog".
+      ### Tests
 
-      Your program will be executed like this: 
-
+      The tester will execute your program like this:
       ```bash
-      $ echo "apple" | ./script.sh -E "a"
+      $ ./your_server.sh
       ```
 
-      The `-E` flag instructs `grep` to interprets patterns as extended regular expressions (with support 
-      for metacharacters like `+`, `?` etc.). We'll use this flag in all stages.
+      Then, the tester will create multiple concurrent TCP connections to your server. (The exact number of connections is determined at random.) After that, the tester will send a single `GET` request through each of the connections.
+      ```bash
+      $ (sleep 3 && printf "GET / HTTP/1.1\r\n\r\n") | nc localhost 4221 &
+      $ (sleep 3 && printf "GET / HTTP/1.1\r\n\r\n") | nc localhost 4221 &
+      $ (sleep 3 && printf "GET / HTTP/1.1\r\n\r\n") | nc localhost 4221 &
+      ```
 
-      You program must [exit](https://en.wikipedia.org/wiki/Exit_status) with 0 if the character is found, and 1 if not.
+      Your server must respond to each request with the following response:
+      ```javascript
+      HTTP/1.1 200 OK\r\n\r\n
+      ```
     marketing_md: |-
-      In this stage, we'll handle the simplest regex possible: a single character. 
-
-      **Example:**
-
-      `a` should match "apple", but not "dog".
+      In this stage, we'll do XYZ.
